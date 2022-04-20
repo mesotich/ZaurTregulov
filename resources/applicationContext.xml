@@ -9,5 +9,9 @@
 <bean id="MyPet"
       class="spring_introduction.Dog">
 </bean>
+    <bean id="MyPerson"
+          class="spring_introduction.Person">
+        <constructor-arg ref="MyPet"/>
+    </bean>
 
 </beans>
