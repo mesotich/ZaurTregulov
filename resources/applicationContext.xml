@@ -12,6 +12,9 @@
     <bean id="MyPerson"
           class="spring_introduction.Person">
         <property name="pet" ref="MyPet"/>
+        <property name="surname" value="Tregulov"/>
+        <property name="age" value="39"/>
     </bean>
+
 
 </beans>
