@@ -9,6 +9,10 @@ public class Test6 {
                 new AnnotationConfigApplicationContext(MyConfig.class);
         Person person = context.getBean("personBeen", Person.class);
         person.callMyPet();
+//        Pet cat1 = context.getBean("catBeen", Pet.class);
+//        Pet cat2 = context.getBean("catBeen", Pet.class);
+
+  //      pet.say();
         context.close();
     }
 }
