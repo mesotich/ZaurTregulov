@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 @Component("personBeen")
 public class Person {
 
+    @Autowired
     private Pet pet;
     private String surname;
     private int age;
@@ -13,7 +14,6 @@ public class Person {
     public Person() {
         System.out.println("Person been is created");
     }
-
     //    @Autowired
 //    public Person(Pet pet) {
 //        System.out.println("Person been is created");
@@ -24,9 +24,9 @@ public class Person {
 //        System.out.println("Class Person: set pet");
 //        this.pet = pet;
 //    }
-    @Autowired
-    public void anyMethod(Pet pet) {
-        System.out.println("Class Person: anyMethod pet");
+
+    public void setPet(Pet pet) {
+        System.out.println("Class Person: set pet");
         this.pet = pet;
     }
 
