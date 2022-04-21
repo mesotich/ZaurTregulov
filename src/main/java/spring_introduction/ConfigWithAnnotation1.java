@@ -6,8 +6,10 @@ public class ConfigWithAnnotation1 {
 
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext3.xml");
-        Cat cat = context.getBean("cat", Cat.class);
-        cat.say();
+//        Cat cat = context.getBean("catBeen", Cat.class);
+//        cat.say();
+        Person person = context.getBean("personBeen", Person.class);
+        person.callMyPet();
         context.close();
     }
 }
