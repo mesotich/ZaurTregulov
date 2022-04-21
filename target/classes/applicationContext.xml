@@ -12,7 +12,7 @@
     </bean>
     <bean id="MyPerson"
           class="spring_introduction.Person">
-        <property name="pet" ref="MyPet"/>
+        <property name="anyMethod" ref="MyPet"/>
         <property name="surname" value="${abc}"/>
         <property name="age" value="${person.age}"/>
     </bean>

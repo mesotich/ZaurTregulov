@@ -10,16 +10,23 @@ public class Person {
     private String surname;
     private int age;
 
-    //    public Person() {
-//    }
-    @Autowired
-    public Person(Pet pet) {
+    public Person() {
         System.out.println("Person been is created");
-        this.pet = pet;
     }
 
-    public void setPet(Pet pet) {
-        System.out.println("Class Person: set pet");
+    //    @Autowired
+//    public Person(Pet pet) {
+//        System.out.println("Person been is created");
+//        this.pet = pet;
+//    }
+//    @Autowired
+//    public void setPet(Pet pet) {
+//        System.out.println("Class Person: set pet");
+//        this.pet = pet;
+//    }
+    @Autowired
+    public void anyMethod(Pet pet) {
+        System.out.println("Class Person: anyMethod pet");
         this.pet = pet;
     }
 
