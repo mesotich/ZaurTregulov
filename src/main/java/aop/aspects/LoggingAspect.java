@@ -1,8 +1,10 @@
 package aop.aspects;
 
+import aop.Book;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +12,6 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Order(10)
 public class LoggingAspect {
-
 //    @Pointcut("execution(* aop.UniLibrary.*(..))")
 //    private void allMethodsFromUniLibrary() {
 //    }
@@ -53,12 +54,30 @@ public class LoggingAspect {
 //    private void allGetters() {
 //    }
 
-    @Before("aop.aspects.MyPointcuts.allGetters()")//PointCut с Book и любым колличеством параметров
-    public void beforeGetLoggingAdvice() {
-        System.out.println("beforeGetLoggingAdvice: логирование попытки получить книгу/журнал");
+    @Before("aop.aspects.MyPointcuts.allAddMethods()")
+    public void beforeAddLoggingAdvice(JoinPoint joinPoint) {
+        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+        System.out.println("methodSignature = " + methodSignature);
+        System.out.println("methodSignature.getMethod() = " + methodSignature.getMethod());
+        System.out.println("methodSignature.getReturnType() = " + methodSignature.getReturnType());
+        System.out.println("methodSignature.getName() = " + methodSignature.getName());
+        System.out.println("beforeAddLoggingAdvice: логирование попытки добавить книгу/журнал");
+        System.out.println("--------------------------------------------------------");
+        if ("addBook".equals(methodSignature.getName())) {
+            Object[] arguments = joinPoint.getArgs();
+            for (Object obj : arguments
+            ) {
+                if (obj instanceof Book) {
+                    Book book = (Book) obj;
+                    System.out.printf("Информация о книге: Название - %s, автор - %s, год издания - %d\n",
+                            book.getName(), book.getAuthor(), book.getYearOfPublication());
+                }
+                if (obj instanceof String) {
+                    System.out.println("Книгу в библиотеку добавил - " + obj);
+                }
+            }
+        }
     }
-
-
 //    @Before("execution(* returnBook())")
 //    public void beforeReturnBookAdvice() {
 //        System.out.println("beforeReturnBookAdvice: попытка вернуть книгу");
