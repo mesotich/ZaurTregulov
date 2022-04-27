@@ -82,4 +82,12 @@ public class Employee {
     public void setSalary(int salary) {
         this.salary = salary;
     }
+
+    public Detail getDetail() {
+        return detail;
+    }
+
+    public void setDetail(Detail detail) {
+        this.detail = detail;
+    }
 }
