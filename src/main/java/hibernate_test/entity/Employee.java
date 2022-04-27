@@ -11,7 +11,7 @@ public class Employee {
     @Column(name = "id")
     private int id;
     @Column(name = "name")
-    private String name;
+    private String firstName;
     @Column(name = "surname")
     private String surname;
     @Column(name = "department")
@@ -22,8 +22,8 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String name, String surname, String department, int salary) {
-        this.name = name;
+    public Employee(String firstName, String surname, String department, int salary) {
+        this.firstName = firstName;
         this.surname = surname;
         this.department = department;
         this.salary = salary;
@@ -33,7 +33,7 @@ public class Employee {
     public String toString() {
         return "Employee{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", firstName='" + firstName + '\'' +
                 ", surname='" + surname + '\'' +
                 ", department='" + department + '\'' +
                 ", salary=" + salary +
@@ -48,12 +48,12 @@ public class Employee {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getSurname() {
